@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Mining</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css"
+        />
+    </head>
+    <style>
+        body {
+            margin: 2rem 0;
+            font-size: 1.3rem !important;
+        }
+        .row {
+            margin-top: 3rem;
+        }
+        pre {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-left: 3px solid #f36d33;
+            color: #666;
+            page-break-inside: avoid;
+            font-family: monospace;
+            line-height: 1.6;
+            margin-bottom: 1.6em;
+            max-width: 100%;
+            overflow: auto;
+            padding: 1em 1.5em;
+            display: block;
+            word-wrap: break-word;
+        }
+    </style>
+    <body>
+        <div class="ui container">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="four wide center aligned column">
+                        <img
+                            class="ui medium image"
+                            src="https://raw.githubusercontent.com/uniqson/assets/master/logo.png"
+                        />
+                    </div>
+                    <div class="twelve wide column">
+                        <table class="ui collapsing striped table">
+                            <tbody>
+                                <tr>
+                                    <td>Token name</td>
+                                    <td>UniqCoin</td>
+                                </tr>
+                                <tr>
+                                    <td>Token symbol</td>
+                                    <td>UNIQ</td>
+                                </tr>
+                                <tr>
+                                    <td>Token supply</td>
+                                    <td>1 Billion</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Decimal points</td>
+                                    <td>18</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Pre-Mined</td>
+                                    <td>100 Billion</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Contract</td>
+                                    <td>
+                                        <a
+                                            href="https://etherscan.io/token/0x1452dbfcff5aa0ba612b74876a025750a51b5b15"
+                                            target="_blank"
+                                            >0x1452dbfcff5aa0ba612b74876a025750a51b5b15</a
+                                        >
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="four wide center aligned column">
+                        <i class="icon server massive"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <h2 class="ui header">MINING PROCESS</h2>
+                        <p>
+                            Mining in UniqCoin is performed with a mathematical
+                            formula. The total coins created is 50000 per
+                            Genesis Address. As we have 10 Genesis Addresses to
+                            be mined  into per day.
+                        </p>
+                        <pre>[TotalGenesisAddresses] * [RewardPerAddress] * [TotalEthBlocksPerDay] = Total coins generated per day 500k per day</pre>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="four wide center aligned column">
+                        <i class="icon key massive"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <h2 class="ui header">GENESIS ADDRESSES</h2>
+                        <p>
+                            Pre-mined tokens:100M
+                            0x834B622e73aa6aD6ad2c8A1834282176484547EB
+                        </p>
+                        <p>
+                            Daily mining of 500k into 10 wallet address at 50k
+                            tokens each, as follows
+                        </p>
+                        <ul>
+                            <li>
+                                These geness addresses are hardcoded into the
+                                the smart contract hnec cannot be modified
+                            </li>
+                        </ul>
+                        <p>
+                            The Genesis Addresses are the addresses where the
+                            initial coins were distributed. There will be no
+                            more coins than the ones that were distributed to
+                            these addresses.
+                        </p>
+                        <pre>
+0x8459676AfCb1804c8ec4Ca2436DDe3Dcc3834c00
+0x1F9d07c81a416bcE0dCd13F13f523a65377Dad0B
+0x859730593eBd4aF41CcBf187A166Xeab16740e0
+0x4C077984C6F430bCD1a574A09B2A0cF4E592464D
+0x0A8C3A722D96a9233c83cAd536d83A7d50Cee7FA
+0x194C252A9E0eAe3240E305d98E7BCd952Bf2d7E4
+0xD09dB349998053dcd7d0e415b529813c96757Bd7
+0x3c56d3418Bb03Ae5A478A8beCE49CC8C03aFa5cD
+0xF9ED74071bb6c86fDd30Bb3Cb30Be1504803d5De
+0x205f884e2b795d330095c863486bD0615aD8371e
+                        </pre>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="four wide center aligned column">
+                        <i class="icon cubes massive"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <h2 class="ui header">Mining functions</h2>
+                        <b>executeDailyMining</b>
+                        <pre>
+                          <code>
+  function executeDailyMining() public returns (bool) {
+    require(block.number.sub(currentBlockNumber) >= minimumBlocks);
+
+    currentBlockNumber = block.number;
+    for(uint i = 0 ; i < totalRewardAddress; i++) {
+      _mint(_rewardAddress[i], perAddressToken);
+    }
+
+    return true;
+ }</code></pre>
+                        <b>currentEthBlock</b>
+                        <pre>
+function currentEthBlock() public view returns (uint256 blockNumber)
+{
+  return block.number;
+}
+            </pre
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
